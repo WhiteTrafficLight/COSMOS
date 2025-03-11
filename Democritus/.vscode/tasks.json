@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Atom Demo",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                // 모든 .cpp 파일
+                "src/*.cpp",
+
+                // 출력 파일 이름
+                "-o",
+                "Democritus_slice",
+
+                // 헤더 include 경로
+                "-I", "include",
+                "-I", "/opt/homebrew/include",   
+
+                // OpenGL, GLUT 링크 (macOS 예시)
+                "-framework", "OpenGL",
+                "-framework", "GLUT",
+
+                // deprecated 경고 억제할지 여부
+                "-Wno-deprecated-declarations",
+                "-DGL_SILENCE_DEPRECATION",
+
+                // C++ 표준
+                "-std=c++11"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build the entire Atom Demo project."
+        }
+    ]
+}
