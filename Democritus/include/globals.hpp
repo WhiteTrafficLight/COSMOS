@@ -41,6 +41,7 @@ extern bool   bladeCutFinished;     ///< True once the blade movement is done
 extern float  bladeThickness;       ///< Blade thickness
 extern float  bladeSpeed;           ///< Blade movement speed
 extern float  BLADE_REPULSION_K;    ///< Strength of repulsion
+extern float bladeAngle;
 extern struct Vec3 bladePos;        ///< Current blade position
 extern struct Vec3 targetBladePos;  ///< Target position for blade
 extern Vec3 INITIAL_OFFSET;        ///OFFSET of the apple from the table

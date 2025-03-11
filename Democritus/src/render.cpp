@@ -34,20 +34,17 @@ void displayCallback()
     glEnable(GL_LIGHTING);
 
     // draw blade
-    extern float bladeThickness;
-    extern Vec3 bladePos;
-    float angle = 135.0f; // or any other angle
 
     glPushMatrix();
     glTranslatef(bladePos.x, bladePos.y, bladePos.z);
-    glRotatef(angle, 0, 0, 1);
+    glRotatef(bladeAngle, 0, 0, 1);
     glDisable(GL_LIGHTING);
     glColor3f(0.7f, 0.7f, 0.7f);
     glBegin(GL_QUADS);
-    glVertex3f(-bladeThickness/2, -0.5f, 0);
-    glVertex3f( bladeThickness/2, -0.5f, 0);
-    glVertex3f( bladeThickness/2,  0.5f, 0);
-    glVertex3f(-bladeThickness/2,  0.5f, 0);
+    glVertex3f(-bladeThickness/2, -0.1f, 0);
+    glVertex3f( bladeThickness/2, -0.1f, 0);
+    glVertex3f( bladeThickness/2,  0.1f, 0);
+    glVertex3f(-bladeThickness/2,  0.1f, 0);
     glEnd();
     glEnable(GL_LIGHTING);
     glPopMatrix();
@@ -89,3 +86,21 @@ void reshapeCallback(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 }
 
+void initGL() {
+    glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
+    glEnable(GL_DEPTH_TEST);
+    
+    // Enable lighting and set up a light source
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    float ambientLight[]  = {0.2f, 0.2f, 0.2f, 1.0f};
+    float diffuseLight[]  = {0.8f, 0.8f, 0.8f, 1.0f};
+    float lightPos[]      = {5.0f, 5.0f, 5.0f, 1.0f};
+    glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+    glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+
+    // Enable color material so that glColor3f calls affect the material properties
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+}

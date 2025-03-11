@@ -16,25 +16,17 @@ int main(int argc, char** argv)
     glutInitWindowSize(800, 600);
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Democritus Apple Demo");
-
-    // 2) Basic GL states
-    glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
-    glEnable(GL_DEPTH_TEST);
-
+    
+    initGL();
+    generateParticles(); 
+    generateBonds();
+    initSingleCluster();
     // 3) Callback registration
     glutDisplayFunc(displayCallback);
     glutReshapeFunc(reshapeCallback);
     glutIdleFunc(idleCallback);
     // For mouse cutting
-    glutMouseFunc(mouseCallback); // if you declared it somewhere
-
-    // 4) Setup lighting, materials if needed
-    // (Alternatively, do this in some initGL() function)
-
-    // 5) Generate particles, bonds, single cluster
-    generateParticles(); 
-    generateBonds();
-    initSingleCluster();
+    glutMouseFunc(mouseCallback);
 
     // 6) Enter main loop
     glutMainLoop();

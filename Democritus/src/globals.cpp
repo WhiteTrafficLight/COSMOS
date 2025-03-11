@@ -1,7 +1,7 @@
 #include "globals.hpp"
 
 // Global simulation constants
-int    NUM_PARTICLES    = 600;
+int    NUM_PARTICLES    = 2000;
 float  APPLE_RADIUS     = 0.5f;
 float  PARTICLE_RADIUS  = 0.02f;
 float  DT               = 0.01f;
@@ -19,10 +19,11 @@ std::vector<Vec3> velocities;
 bool   cutting          = false;
 bool   bladeCutFinished = false;
 float  bladeThickness   = 0.02f;
-float  bladeSpeed       = 0.1f;
-float  BLADE_REPULSION_K= 200.0f;
-Vec3   bladePos         = {0.0f, 0.0f, 0.0f};
-Vec3   targetBladePos   = {0.0f, 0.0f, 0.0f};
+float  bladeSpeed       = 0.5f;
+float  BLADE_REPULSION_K= 100.0f;
+float bladeAngle = 135.0f;
+Vec3   bladePos         = {0.7f, 0.7f, 0.0f};
+Vec3   targetBladePos   = {-0.7f, -0.7f, 0.0f};
 Vec3 INITIAL_OFFSET = {0.0f, 0.0f, 0.3f};
 
 /**
@@ -115,3 +116,6 @@ void generateParticles() {
     // Output the result
     std::cout << "Generated " << particles.size() << " particles after " << attempts << " attempts.\n";
 }
+
+
+

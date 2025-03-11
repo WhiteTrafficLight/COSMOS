@@ -11,5 +11,7 @@ void displayCallback();
  */
 void reshapeCallback(int w, int h);
 
+void initGL();
+
 #endif // RENDER_HPP
 

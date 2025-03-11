@@ -16,7 +16,7 @@ void generateBonds()
 
             // Use a global or local threshold. We'll assume
             // a global BOND_CONNECT_DIST from somewhere, or just a fixed value
-            float threshold = 0.06f; // or BOND_CONNECT_DIST if you prefer
+            float threshold = 0.1f; // or BOND_CONNECT_DIST if you prefer
             if(dist < threshold)
             {
                 Bond b;
